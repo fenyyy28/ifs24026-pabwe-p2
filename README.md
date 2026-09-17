@@ -28,7 +28,7 @@ Praktikum 2 (CSS, Bootstrap 5, Tailwind CSS 4).
 
 ## Brand
 
-**Arunika AI** — nama diambil dari kata *arunika* (cahaya fajar), merepresentasikan tema
+**Feny AI** — nama diambil dari kata *arunika* (cahaya fajar), merepresentasikan tema
 "insight yang menyingsing" untuk visual perusahaan (gradasi warna gelap → amber → rose).
 
 ## Cara menjalankan
