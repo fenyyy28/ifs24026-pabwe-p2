@@ -1,123 +1,65 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Mengapa Chatbot Anda Perlu Lebih dari Sekadar Skrip — Feny AI</title>
-
-  <meta
-    name="description"
-    content="Memahami mengapa chatbot modern membutuhkan AI dan pemahaman konteks, bukan hanya skrip percakapan."
-  />
+  <title>Artificial Intelligence | Feny AI</title>
 
   <!-- Bootstrap 5 -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
-  />
+  >
 
   <!-- Bootstrap Icons -->
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-  />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  >
 
   <style>
     :root {
       --ak-ink: #14151f;
       --ak-amber: #e1975c;
-
-      /* Warna dibuat lebih gelap agar kontras lebih baik */
       --ak-amber-deep: #7a4a1e;
       --ak-rose: #8f3f4d;
-
       --ak-cream: #faf7f2;
+      --ak-muted: #4f5663;
+      --ak-light: #d9dde8;
     }
 
     body {
-      font-family: "Inter", sans-serif;
       background-color: var(--ak-cream);
       color: var(--ak-ink);
-      line-height: 1.7;
     }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: "Fraunces", Georgia, serif;
-    }
-
-    /* ===================== NAVBAR ===================== */
 
     .blog-navbar {
       background-color: rgba(250, 247, 242, 0.96);
       border-bottom: 1px solid rgba(20, 21, 31, 0.08);
     }
 
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: linear-gradient(
-        135deg,
-        var(--ak-amber),
-        var(--ak-rose)
-      );
-      color: #ffffff;
-      font-weight: 600;
-      margin-right: 8px;
-    }
-
-    .blog-link {
-      color: #0056b3 !important;
+    .brand {
+      color: var(--ak-ink);
+      font-weight: 700;
       text-decoration: none;
     }
 
-    .blog-link:hover {
-      color: #003d80 !important;
+    .brand:hover {
+      color: var(--ak-amber-deep);
     }
-
-    .contact-link {
-      color: #005f73;
-    }
-
-    .contact-link:hover {
-      color: #003f4d;
-    }
-
-    /* ===================== ARTICLE ===================== */
 
     .article-container {
-      max-width: 800px;
+      max-width: 850px;
     }
 
-    .article-header {
-      padding-top: 4rem;
-      padding-bottom: 2rem;
-    }
-
-    .article-meta {
-      color: #5b6478;
-      font-size: 0.9rem;
+    .article-header .text-secondary {
+      color: var(--ak-muted) !important;
     }
 
     .cover-detail {
       min-height: 300px;
-      border-radius: 28px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -129,55 +71,39 @@
       );
 
       color: #ffffff;
-      font-size: 5rem;
-      margin-bottom: 2.5rem;
+      overflow: hidden;
     }
 
-    .post-body {
+    .cover-detail i {
+      font-size: 7rem;
+    }
+
+    .article-content {
+      line-height: 1.8;
       font-size: 1.05rem;
     }
 
-    .post-body p {
-      margin-bottom: 1.5rem;
-      color: #3f4655;
-    }
-
-    .post-body h2 {
-      margin-top: 2.5rem;
+    .article-content h2 {
+      margin-top: 2rem;
       margin-bottom: 1rem;
-      color: var(--ak-ink);
+      font-weight: 700;
     }
 
-    .post-body ul {
-      padding-left: 1.5rem;
-      margin-bottom: 1.5rem;
+    .article-content p {
+      margin-bottom: 1.2rem;
     }
 
-    .post-body li {
-      margin-bottom: 0.6rem;
-      color: #3f4655;
-    }
-
-    .ak-quote {
+    .article-content blockquote {
       margin: 2rem 0;
-      padding: 1.5rem 1.8rem;
-      border-left: 5px solid var(--ak-amber-deep);
+      padding: 1.25rem 1.5rem;
+      border-left: 5px solid var(--ak-amber);
       background-color: #ffffff;
-      border-radius: 0 14px 14px 0;
-      color: #3f4655;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .article-content blockquote p {
+      margin-bottom: 0;
       font-style: italic;
-    }
-
-    /* ===================== ALERT ===================== */
-
-    .article-alert {
-      border-left: 4px solid var(--ak-amber-deep);
-    }
-
-    /* ===================== RELATED ARTICLE ===================== */
-
-    .related-section {
-      margin-top: 4rem;
     }
 
     .related-cover {
@@ -194,48 +120,36 @@
       );
 
       color: #ffffff;
-      font-size: 2.5rem;
     }
 
-    /* ===================== COMMENT ===================== */
+    .related-cover i {
+      font-size: 3rem;
+    }
 
     .comment-form {
       background-color: #ffffff;
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid rgba(20, 21, 31, 0.08);
     }
 
-    .comment-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: linear-gradient(
-        135deg,
-        var(--ak-amber),
-        var(--ak-rose)
-      );
-
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    /* ===================== FOOTER ===================== */
-
     .site-footer {
       background-color: var(--ak-ink);
-      color: var(--ak-cream);
     }
 
-    .site-footer a {
-      color: #d9dde8;
+    .site-footer .text-secondary {
+      color: var(--ak-light) !important;
+    }
+
+    .footer-link {
+      color: #ffffff;
       text-decoration: none;
     }
 
-    .site-footer a:hover {
+    .footer-link:hover {
+      color: #f0c9a7;
+    }
+
+    .footer-title {
       color: #ffffff;
     }
   </style>
@@ -243,16 +157,11 @@
 
 <body>
 
-  <!-- ===================== NAVBAR ===================== -->
-
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg blog-navbar sticky-top">
-    <div class="container py-2">
+    <div class="container">
 
-      <a
-        class="navbar-brand d-flex align-items-center fw-semibold"
-        href="index.html"
-      >
-        <span class="brand-mark" aria-hidden="true">F</span>
+      <a class="navbar-brand brand" href="index.html">
         Feny AI
       </a>
 
@@ -260,407 +169,364 @@
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarBlogDetail"
-        aria-controls="navbarBlogDetail"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
         aria-expanded="false"
         aria-label="Buka navigasi"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div
-        class="collapse navbar-collapse"
-        id="navbarBlogDetail"
-      >
-
+      <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
 
           <li class="nav-item">
-            <a
-              class="nav-link"
-              href="index.html"
-            >
+            <a class="nav-link" href="index.html">
               Beranda
             </a>
           </li>
 
           <li class="nav-item">
-            <a
-              class="nav-link blog-link"
-              href="blog.html"
-              aria-current="page"
-            >
+            <a class="nav-link active" href="blog.html">
               Blog
             </a>
           </li>
 
           <li class="nav-item">
-            <a
-              class="nav-link"
-              href="cv.html"
-            >
+            <a class="nav-link" href="cv.html">
               CV
             </a>
           </li>
 
         </ul>
-
       </div>
     </div>
   </nav>
 
 
-  <!-- ===================== MAIN ARTICLE ===================== -->
+  <!-- Artikel -->
+  <main class="container article-container py-5">
 
-  <main>
+    <header class="article-header">
 
-    <article class="container article-container">
+      <p class="small text-uppercase fw-semibold text-secondary">
+        Artificial Intelligence
+      </p>
 
-      <!-- ===================== ARTICLE HEADER ===================== -->
+      <h1 class="display-5 fw-bold mt-2">
+        Mengenal Artificial Intelligence
+      </h1>
 
-      <header class="article-header">
+      <p class="lead mt-4 text-secondary">
+        Chatbot modern merupakan salah satu contoh penerapan
+        kecerdasan buatan yang banyak digunakan dalam layanan digital.
+      </p>
 
-        <p class="article-meta mb-3">
-          AI &middot; 10 September 2026
+      <div class="d-flex flex-wrap gap-3 small text-secondary mt-3">
+        <span>
+          <i class="bi bi-calendar3"></i>
+          16 September 2026
+        </span>
+
+        <span>
+          <i class="bi bi-person"></i>
+          Feny AI
+        </span>
+      </div>
+
+    </header>
+
+
+    <!-- Cover -->
+    <div
+      class="cover-detail mt-4"
+      aria-hidden="true"
+    >
+      <i
+        class="bi bi-chat-dots"
+        aria-hidden="true"
+      ></i>
+    </div>
+
+
+    <!-- Isi artikel -->
+    <article class="article-content mt-5">
+
+      <p>
+        Artificial Intelligence atau AI adalah teknologi yang
+        memungkinkan komputer melakukan tugas yang biasanya
+        membutuhkan kemampuan manusia. Contohnya adalah memahami
+        bahasa, mengenali pola, membuat prediksi, dan membantu
+        pengguna mengambil keputusan berdasarkan data.
+      </p>
+
+      <p>
+        Dalam kehidupan sehari-hari, AI sudah digunakan dalam
+        berbagai layanan digital. Rekomendasi video, pencarian
+        informasi, penerjemah bahasa, sistem navigasi, dan chatbot
+        merupakan beberapa contoh penerapan AI yang mudah ditemukan.
+      </p>
+
+      <p>
+        Salah satu perkembangan yang cukup dikenal adalah
+        generative AI. Teknologi ini dapat menghasilkan konten
+        baru berdasarkan instruksi yang diberikan pengguna.
+        Konten tersebut dapat berupa teks, gambar, kode program,
+        atau bentuk informasi lainnya.
+      </p>
+
+
+      <blockquote>
+        <p>
+          AI dapat membantu manusia menyelesaikan pekerjaan,
+          tetapi hasil yang diberikan tetap perlu diperiksa
+          dan digunakan secara bertanggung jawab.
         </p>
-
-        <h1 class="display-5 fw-semibold">
-          Mengapa Chatbot Anda Perlu Lebih dari Sekadar Skrip
-        </h1>
-
-        <p class="lead mt-4 text-secondary">
-          Chatbot modern tidak hanya bertugas memberikan jawaban berdasarkan
-          kata kunci. Dengan bantuan AI, chatbot dapat memahami konteks dan
-          memberikan respons yang lebih sesuai dengan kebutuhan pengguna.
-        </p>
-
-      </header>
+      </blockquote>
 
 
-      <!-- ===================== COVER ===================== -->
+      <h2>
+        Bagaimana AI bekerja?
+      </h2>
 
-      <div
-        class="cover-detail"
-        aria-label="Ilustrasi chatbot dan kecerdasan buatan"
-      >
-        <i
-          class="bi bi-chat-dots"
-          aria-hidden="true"
-        ></i>
+      <p>
+        Secara sederhana, sistem AI memanfaatkan data untuk
+        mengenali pola. Data tersebut digunakan dalam proses
+        pelatihan sehingga model dapat menghasilkan keluaran
+        ketika menerima data baru.
+      </p>
+
+      <p>
+        Kualitas data menjadi salah satu hal penting karena
+        data yang digunakan dapat memengaruhi hasil sistem.
+        Karena itu, proses pengumpulan, pembersihan, dan
+        pengolahan data perlu diperhatikan.
+      </p>
+
+
+      <h2>
+        Contoh penggunaan AI
+      </h2>
+
+      <p>
+        AI dapat digunakan dalam berbagai bidang sesuai dengan
+        kebutuhan. Beberapa contohnya adalah:
+      </p>
+
+      <ul>
+        <li>Chatbot untuk membantu menjawab pertanyaan pengguna.</li>
+        <li>Rekomendasi produk atau konten berdasarkan pola pengguna.</li>
+        <li>Analisis gambar untuk mengenali objek tertentu.</li>
+        <li>Prediksi berdasarkan data historis.</li>
+        <li>Otomatisasi pekerjaan yang dilakukan secara berulang.</li>
+      </ul>
+
+
+      <!-- Alert -->
+      <div class="alert alert-warning mt-4" role="alert">
+        <strong>Catatan:</strong>
+        Penggunaan AI tetap membutuhkan pemeriksaan manusia,
+        terutama ketika hasil AI digunakan untuk keputusan penting.
       </div>
 
 
-      <!-- ===================== ARTICLE CONTENT ===================== -->
-
-      <div class="post-body">
-
-        <p>
-          Banyak chatbot sederhana bekerja menggunakan aturan atau skrip
-          yang sudah ditentukan sebelumnya. Ketika pengguna memberikan
-          pertanyaan yang sesuai dengan pola yang tersedia, sistem akan
-          memberikan jawaban yang sudah disiapkan.
-        </p>
-
-        <p>
-          Pendekatan tersebut memang dapat digunakan untuk kebutuhan
-          sederhana. Namun, masalah muncul ketika pengguna memberikan
-          pertanyaan dengan cara yang berbeda dari pola yang telah dibuat.
-          Chatbot dapat kesulitan memahami maksud pengguna dan akhirnya
-          memberikan jawaban yang kurang sesuai.
-        </p>
-
-        <p>
-          Dengan teknologi AI, chatbot dapat dikembangkan agar mampu
-          memahami konteks percakapan. Sistem tidak hanya melihat satu
-          kata atau kalimat, tetapi dapat menggunakan informasi dari
-          percakapan sebelumnya untuk menghasilkan respons yang lebih
-          relevan.
-        </p>
-
-
-        <!-- ===================== QUOTE ===================== -->
-
-        <blockquote class="ak-quote">
-          Chatbot yang baik bukan hanya mampu menjawab pertanyaan,
-          tetapi juga mampu memahami kebutuhan pengguna.
-        </blockquote>
-
-
-        <!-- ===================== SECTION ===================== -->
-
-        <h2>
-          Apa yang Membuat Chatbot Berbasis AI Berbeda?
-        </h2>
-
-        <p>
-          Perbedaan utama terletak pada kemampuan sistem dalam memproses
-          bahasa dan memahami konteks. Chatbot berbasis AI dapat digunakan
-          untuk menangani percakapan yang lebih beragam dibandingkan
-          chatbot yang hanya mengandalkan skrip.
-        </p>
-
-        <p>
-          Dalam penerapannya, beberapa kemampuan yang dapat dikembangkan
-          antara lain:
-        </p>
-
-
-        <!-- ===================== LIST ===================== -->
-
-        <ul>
-          <li>
-            Memahami pertanyaan pengguna dengan variasi bahasa yang berbeda.
-          </li>
-
-          <li>
-            Menggunakan konteks percakapan untuk memberikan jawaban yang
-            lebih relevan.
-          </li>
-
-          <li>
-            Membantu mengotomatisasi pertanyaan yang sering muncul dari
-            pelanggan.
-          </li>
-        </ul>
-
-
-        <!-- ===================== ALERT ===================== -->
-
-        <div
-          class="alert alert-info article-alert"
-          role="note"
-        >
-          <strong>Catatan:</strong>
-          Penerapan AI tetap perlu disesuaikan dengan kebutuhan bisnis.
-          Tidak semua proses membutuhkan chatbot berbasis AI yang kompleks.
-        </div>
-
-
-        <!-- ===================== CONCLUSION ===================== -->
-
-        <h2>
-          Kesimpulan
-        </h2>
-
-        <p>
-          Chatbot dapat menjadi salah satu solusi untuk membantu bisnis
-          memberikan layanan kepada pelanggan. Namun, chatbot yang hanya
-          bergantung pada skrip memiliki keterbatasan ketika menghadapi
-          pertanyaan yang tidak sesuai dengan pola yang telah ditentukan.
-        </p>
-
-        <p>
-          Penggunaan AI dapat membantu chatbot memahami bahasa dan konteks
-          percakapan dengan lebih baik. Karena itu, pengembangan chatbot
-          sebaiknya dimulai dari kebutuhan pengguna dan masalah bisnis
-          yang ingin diselesaikan.
-        </p>
-
-      </div>
-
-
-      <!-- ===================== RELATED ARTICLES ===================== -->
-
-      <section
-        class="related-section"
-        aria-labelledby="related-title"
-      >
-
-        <h2
-          id="related-title"
-          class="h3 fw-semibold mb-4"
-        >
-          Artikel Terkait
-        </h2>
-
-        <div class="row g-4">
-
-          <!-- Related 1 -->
-          <div class="col-md-6">
-
-            <article class="card h-100 border-0 shadow-sm">
-
-              <div class="related-cover">
-                <i
-                  class="bi bi-cpu"
-                  aria-hidden="true"
-                ></i>
-              </div>
-
-              <div class="card-body p-4">
-
-                <p class="small text-secondary mb-2">
-                  AI &middot; 8 September 2026
-                </p>
-
-                <h3 class="h5">
-                  <a
-                    href="blog-detail.html"
-                    class="blog-link stretched-link fw-semibold"
-                  >
-                    AI untuk Bisnis Kecil: Mulai dari Mana?
-                  </a>
-                </h3>
-
-                <p class="text-secondary mb-0">
-                  Langkah awal menerapkan AI pada proses bisnis sederhana.
-                </p>
-
-              </div>
-
-            </article>
-
-          </div>
-
-
-          <!-- Related 2 -->
-          <div class="col-md-6">
-
-            <article class="card h-100 border-0 shadow-sm">
-
-              <div class="related-cover">
-                <i
-                  class="bi bi-eye"
-                  aria-hidden="true"
-                ></i>
-              </div>
-
-              <div class="card-body p-4">
-
-                <p class="small text-secondary mb-2">
-                  Computer Vision &middot; 5 September 2026
-                </p>
-
-                <h3 class="h5">
-                  <a
-                    href="blog-detail.html"
-                    class="blog-link stretched-link fw-semibold"
-                  >
-                    Computer Vision dan Masa Depan Industri
-                  </a>
-                </h3>
-
-                <p class="text-secondary mb-0">
-                  Mengenal penggunaan computer vision dalam proses industri.
-                </p>
-
-              </div>
-
-            </article>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ===================== COMMENT FORM ===================== -->
-
-      <section
-        class="my-5"
-        aria-labelledby="comment-title"
-      >
-
-        <h2
-          id="comment-title"
-          class="h3 fw-semibold mb-4"
-        >
-          Tinggalkan Komentar
-        </h2>
-
-        <form
-          class="comment-form p-4"
-          action="#"
-          method="post"
-        >
-
-          <div class="mb-3">
-            <label
-              for="nama"
-              class="form-label fw-medium"
-            >
-              Nama
-            </label>
-
-            <input
-              type="text"
-              id="nama"
-              name="nama"
-              class="form-control"
-              placeholder="Nama Anda"
-              required
-            />
-          </div>
-
-
-          <div class="mb-3">
-            <label
-              for="email"
-              class="form-label fw-medium"
-            >
-              Email
-            </label>
-
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="form-control"
-              placeholder="nama@email.com"
-              required
-            />
-          </div>
-
-
-          <div class="mb-3">
-            <label
-              for="komentar"
-              class="form-label fw-medium"
-            >
-              Komentar
-            </label>
-
-            <textarea
-              id="komentar"
-              name="komentar"
-              class="form-control"
-              rows="5"
-              placeholder="Tulis komentar Anda..."
-              required
-            ></textarea>
-          </div>
-
-
-          <button
-            type="submit"
-            class="btn btn-dark px-4"
-          >
-            Kirim Komentar
-          </button>
-
-        </form>
-
-      </section>
+      <h2>
+        Kesimpulan
+      </h2>
+
+      <p>
+        Artificial Intelligence memberikan berbagai peluang
+        untuk membantu pekerjaan manusia dan mengembangkan
+        layanan digital. Pemanfaatannya perlu disesuaikan
+        dengan kebutuhan serta memperhatikan kualitas data,
+        keamanan, dan tanggung jawab dalam penggunaannya.
+      </p>
 
     </article>
+
+
+    <!-- Artikel terkait -->
+    <section class="mt-5">
+
+      <h2 class="h4 fw-bold mb-4">
+        Artikel Terkait
+      </h2>
+
+      <div class="row g-4">
+
+        <div class="col-md-6">
+          <article class="card h-100 border-0 shadow-sm">
+
+            <div
+              class="related-cover"
+              aria-hidden="true"
+            >
+              <i class="bi bi-bar-chart-line"></i>
+            </div>
+
+            <div class="card-body p-4">
+
+              <p class="small text-uppercase text-secondary fw-semibold">
+                Data & AI
+              </p>
+
+              <h3 class="h5 fw-bold">
+                Mengapa Data Penting untuk AI?
+              </h3>
+
+              <p class="text-secondary">
+                Data menjadi bagian penting dalam proses
+                pengembangan sistem kecerdasan buatan.
+              </p>
+
+              <a
+                href="blog-detail.html"
+                class="stretched-link"
+              >
+                Baca artikel
+              </a>
+
+            </div>
+          </article>
+        </div>
+
+
+        <div class="col-md-6">
+          <article class="card h-100 border-0 shadow-sm">
+
+            <div
+              class="related-cover"
+              aria-hidden="true"
+            >
+              <i class="bi bi-shield-check"></i>
+            </div>
+
+            <div class="card-body p-4">
+
+              <p class="small text-uppercase text-secondary fw-semibold">
+                AI & Keamanan
+              </p>
+
+              <h3 class="h5 fw-bold">
+                Tantangan Keamanan dalam Penggunaan AI
+              </h3>
+
+              <p class="text-secondary">
+                Penggunaan AI juga perlu memperhatikan
+                keamanan dan privasi data.
+              </p>
+
+              <a
+                href="blog-detail.html"
+                class="stretched-link"
+              >
+                Baca artikel
+              </a>
+
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Form komentar -->
+    <section class="comment-form p-4 p-md-5 mt-5">
+
+      <h2 class="h4 fw-bold">
+        Tinggalkan Komentar
+      </h2>
+
+      <p class="text-secondary">
+        Bagikan pendapat atau pertanyaan Anda tentang artikel ini.
+      </p>
+
+      <form>
+
+        <div class="mb-3">
+          <label
+            for="nama"
+            class="form-label"
+          >
+            Nama
+          </label>
+
+          <input
+            type="text"
+            class="form-control"
+            id="nama"
+            name="nama"
+            placeholder="Masukkan nama"
+            required
+          >
+        </div>
+
+
+        <div class="mb-3">
+          <label
+            for="email"
+            class="form-label"
+          >
+            Email
+          </label>
+
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Masukkan email"
+            required
+          >
+        </div>
+
+
+        <div class="mb-3">
+          <label
+            for="komentar"
+            class="form-label"
+          >
+            Komentar
+          </label>
+
+          <textarea
+            class="form-control"
+            id="komentar"
+            name="komentar"
+            rows="5"
+            placeholder="Tulis komentar..."
+            required
+          ></textarea>
+        </div>
+
+
+        <button
+          type="submit"
+          class="btn btn-dark"
+        >
+          Kirim Komentar
+        </button>
+
+      </form>
+
+    </section>
 
   </main>
 
 
-  <!-- ===================== FOOTER ===================== -->
+  <!-- Footer -->
+  <footer class="site-footer py-5">
 
-  <footer class="site-footer mt-5">
+    <div class="container">
 
-    <div class="container py-5">
+      <div class="row g-4">
 
-      <div class="row g-4 align-items-center">
+        <div class="col-md-7">
 
-        <div class="col-md-6">
-
-          <div class="fs-5 fw-semibold">
+          <h2 class="h5 footer-title">
             Feny AI
-          </div>
+          </h2>
 
           <p class="small text-secondary mb-0 mt-2">
             Solusi kecerdasan buatan untuk kebutuhan digital.
@@ -669,40 +535,49 @@
         </div>
 
 
-        <div class="col-md-6">
+        <div class="col-md-5">
 
-          <ul class="list-unstyled d-flex justify-content-md-end gap-4 mb-0">
+          <h2 class="h6 footer-title">
+            Navigasi
+          </h2>
 
-            <li>
-              <a href="index.html">
-                Beranda
-              </a>
-            </li>
+          <p class="small mb-0">
+            <a
+              href="index.html"
+              class="footer-link"
+            >
+              Beranda
+            </a>
+          </p>
 
-            <li>
-              <a href="blog.html">
-                Blog
-              </a>
-            </li>
+          <p class="small mb-0 mt-2">
+            <a
+              href="blog.html"
+              class="footer-link"
+            >
+              Blog
+            </a>
+          </p>
 
-            <li>
-              <a href="cv.html">
-                CV
-              </a>
-            </li>
-
-          </ul>
+          <p class="small mb-0 mt-2">
+            <a
+              href="cv.html"
+              class="footer-link"
+            >
+              CV
+            </a>
+          </p>
 
         </div>
 
       </div>
 
 
-      <hr class="border-secondary my-4" />
+      <hr class="border-secondary my-4">
 
 
       <p class="small text-secondary mb-0">
-        &copy; 2026 Feny AI. Seluruh hak cipta dilindungi.
+        © 2026 Feny AI. Semua hak dilindungi.
       </p>
 
     </div>

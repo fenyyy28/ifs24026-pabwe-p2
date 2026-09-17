@@ -1,34 +1,22 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Blog — Feny AI</title>
-
-  <meta
-    name="description"
-    content="Blog Feny AI membahas AI, chatbot, computer vision, data, dan teknologi digital."
-  />
+  <title>Blog | Feny AI</title>
 
   <!-- Bootstrap 5 -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
-  />
+  >
 
   <!-- Bootstrap Icons -->
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-  />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  >
 
   <style>
     :root {
@@ -37,21 +25,13 @@
       --ak-amber-deep: #7a4a1e;
       --ak-rose: #8f3f4d;
       --ak-cream: #faf7f2;
+      --ak-muted: #4f5663;
+      --ak-light: #d9dde8;
     }
 
     body {
-      font-family: "Inter", sans-serif;
       background-color: var(--ak-cream);
       color: var(--ak-ink);
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: "Fraunces", Georgia, serif;
     }
 
     .blog-navbar {
@@ -59,39 +39,59 @@
       border-bottom: 1px solid rgba(20, 21, 31, 0.08);
     }
 
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: linear-gradient(
-        135deg,
-        var(--ak-amber),
-        var(--ak-rose)
-      );
-      color: white;
-      font-weight: 600;
-      margin-right: 8px;
+    .brand {
+      color: var(--ak-ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .brand:hover {
+      color: var(--ak-amber-deep);
     }
 
     .blog-hero {
       background-color: var(--ak-cream);
     }
 
+    /*
+      Override Bootstrap text-secondary agar
+      memenuhi contrast accessibility.
+    */
+    .blog-hero .text-secondary {
+      color: var(--ak-muted) !important;
+    }
+
+    .blog-link {
+      color: #0056b3;
+      text-decoration: none;
+    }
+
+    .blog-link:hover {
+      color: #003d80;
+      text-decoration: underline;
+    }
+
+    .contact-link {
+      color: #005f73;
+      text-decoration: none;
+    }
+
+    .contact-link:hover {
+      color: #003f4d;
+      text-decoration: underline;
+    }
+
     .article-card {
       border: 1px solid rgba(20, 21, 31, 0.08);
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
-      transition:
-        transform 180ms ease,
-        box-shadow 180ms ease;
+      background-color: #ffffff;
+      transition: transform 180ms ease, box-shadow 180ms ease;
     }
 
     .article-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 18px 35px rgba(20, 21, 31, 0.1);
+      box-shadow: 0 12px 28px rgba(20, 21, 31, 0.08);
     }
 
     .article-cover {
@@ -104,54 +104,59 @@
         var(--ak-amber),
         var(--ak-rose)
       );
-      color: white;
-      font-size: 3rem;
+      color: #ffffff;
     }
 
-    .blog-link {
+    .article-cover i {
+      font-size: 4rem;
+    }
+
+    .card-title {
+      color: var(--ak-ink);
+    }
+
+    .card-text {
+      color: var(--ak-muted);
+    }
+
+    .read-more {
       color: #0056b3;
-      text-decoration: none;
-    }
-
-    .blog-link:hover {
-      color: #003d80;
-    }
-
-    .contact-link {
-      color: #005f73;
-    }
-
-    .contact-link:hover {
-      color: #003f4d;
+      font-weight: 600;
     }
 
     .footer {
       background-color: var(--ak-ink);
-      color: var(--ak-cream);
     }
 
-    .footer a {
-      color: #d9dde8;
+    /*
+      Footer menggunakan teks terang agar
+      kontras dengan background gelap.
+    */
+    .footer .text-secondary {
+      color: var(--ak-light) !important;
+    }
+
+    .footer-link {
+      color: #ffffff;
       text-decoration: none;
     }
 
-    .footer a:hover {
-      color: white;
+    .footer-link:hover {
+      color: #f0c9a7;
+    }
+
+    .footer-title {
+      color: #ffffff;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ===================== NAVBAR ===================== -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg blog-navbar sticky-top">
-    <div class="container py-2">
-
-      <a
-        class="navbar-brand d-flex align-items-center fw-semibold"
-        href="index.html"
-      >
-        <span class="brand-mark" aria-hidden="true">F</span>
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">
         Feny AI
       </a>
 
@@ -159,16 +164,15 @@
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarBlog"
-        aria-controls="navbarBlog"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
         aria-expanded="false"
         aria-label="Buka navigasi"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarBlog">
-
+      <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
 
           <li class="nav-item">
@@ -179,9 +183,9 @@
 
           <li class="nav-item">
             <a
-              class="nav-link blog-link"
-              href="blog.html"
+              class="nav-link active"
               aria-current="page"
+              href="blog.html"
             >
               Blog
             </a>
@@ -194,268 +198,229 @@
           </li>
 
         </ul>
-
       </div>
     </div>
   </nav>
 
 
-  <!-- ===================== HERO BLOG ===================== -->
+  <!-- Hero -->
   <header class="blog-hero py-5">
-    <div class="container">
+    <div class="container py-4">
+      <p class="mb-2 fw-semibold text-uppercase small text-secondary">
+        Feny AI Blog
+      </p>
 
-      <div class="mx-auto text-center" style="max-width: 40rem;">
+      <h1 class="display-5 fw-bold">
+        Catatan tentang AI dan Teknologi
+      </h1>
 
-        <p class="mb-2 fw-semibold text-uppercase small text-secondary">
-          Feny AI Blog
-        </p>
-
-        <h1 class="display-5 fw-semibold">
-          Insight tentang AI dan Teknologi
-        </h1>
-
-        <p class="mt-3 mb-0 text-secondary">
-          Membahas perkembangan kecerdasan buatan, chatbot, computer vision,
-          dan pemanfaatan data dalam pengembangan solusi digital.
-        </p>
-
-      </div>
-
+      <p class="mt-3 mb-0 text-secondary">
+        Membahas perkembangan kecerdasan buatan, teknologi digital,
+        dan penerapannya dalam kehidupan sehari-hari.
+      </p>
     </div>
   </header>
 
 
-  <!-- ===================== ARTIKEL ===================== -->
-  <main class="container py-5">
-
+  <!-- Artikel -->
+  <main class="container pb-5">
     <div class="row g-4">
 
       <!-- Artikel 1 -->
       <div class="col-md-6">
+        <article class="card article-card h-100">
 
-        <article class="card article-card h-100 bg-white">
-
-          <div class="article-cover">
-            <i class="bi bi-chat-dots" aria-hidden="true"></i>
+          <div
+            class="article-cover"
+            aria-hidden="true"
+          >
+            <i class="bi bi-robot"></i>
           </div>
 
           <div class="card-body p-4">
-
-            <p class="small text-secondary mb-2">
-              AI &middot; 10 September 2026
+            <p class="small text-uppercase fw-semibold text-secondary">
+              Artificial Intelligence
             </p>
 
-            <!-- h2 digunakan agar urutan heading valid -->
-            <h2 class="h6 card-title">
-              <a
-                href="blog-detail.html"
-                class="blog-link stretched-link fw-semibold"
-              >
-                Mengapa Chatbot Anda Perlu Lebih dari Sekadar Skrip
-              </a>
+            <h2 class="h5 card-title fw-bold">
+              Mengenal Artificial Intelligence
             </h2>
 
-            <p class="card-text text-secondary mt-3">
-              Chatbot modern tidak hanya menjawab pertanyaan berdasarkan
-              skrip. Dengan AI, chatbot dapat memahami konteks percakapan
-              dan memberikan respons yang lebih sesuai.
+            <p class="card-text mt-3">
+              Artificial Intelligence atau AI merupakan teknologi
+              yang memungkinkan komputer melakukan tugas yang
+              biasanya membutuhkan kemampuan manusia.
             </p>
 
+            <a
+              href="blog-detail.html"
+              class="blog-link stretched-link"
+            >
+              Baca selengkapnya
+            </a>
           </div>
 
         </article>
-
       </div>
 
 
       <!-- Artikel 2 -->
       <div class="col-md-6">
+        <article class="card article-card h-100">
 
-        <article class="card article-card h-100 bg-white">
-
-          <div class="article-cover">
-            <i class="bi bi-cpu" aria-hidden="true"></i>
+          <div
+            class="article-cover"
+            aria-hidden="true"
+          >
+            <i class="bi bi-chat-dots"></i>
           </div>
 
           <div class="card-body p-4">
-
-            <p class="small text-secondary mb-2">
-              AI &middot; 8 September 2026
+            <p class="small text-uppercase fw-semibold text-secondary">
+              Generative AI
             </p>
 
-            <h2 class="h6 card-title">
-              <a
-                href="blog-detail.html"
-                class="blog-link stretched-link fw-semibold"
-              >
-                AI untuk Bisnis Kecil: Mulai dari Mana?
-              </a>
+            <h2 class="h5 card-title fw-bold">
+              Peran Generative AI dalam Dunia Digital
             </h2>
 
-            <p class="card-text text-secondary mt-3">
-              Penerapan AI tidak selalu harus dimulai dari sistem yang
-              kompleks. Bisnis kecil dapat memulai dari proses sederhana
-              yang membutuhkan otomasi dan pengolahan data.
+            <p class="card-text mt-3">
+              Generative AI dapat membantu menghasilkan teks,
+              gambar, kode, dan berbagai bentuk konten digital
+              berdasarkan instruksi dari pengguna.
             </p>
 
+            <a
+              href="blog-detail.html"
+              class="blog-link stretched-link"
+            >
+              Baca selengkapnya
+            </a>
           </div>
 
         </article>
-
       </div>
 
 
       <!-- Artikel 3 -->
       <div class="col-md-6">
+        <article class="card article-card h-100">
 
-        <article class="card article-card h-100 bg-white">
-
-          <div class="article-cover">
-            <i class="bi bi-eye" aria-hidden="true"></i>
+          <div
+            class="article-cover"
+            aria-hidden="true"
+          >
+            <i class="bi bi-bar-chart-line"></i>
           </div>
 
           <div class="card-body p-4">
-
-            <p class="small text-secondary mb-2">
-              Computer Vision &middot; 5 September 2026
+            <p class="small text-uppercase fw-semibold text-secondary">
+              Data & AI
             </p>
 
-            <h2 class="h6 card-title">
-              <a
-                href="blog-detail.html"
-                class="blog-link stretched-link fw-semibold"
-              >
-                Computer Vision dan Masa Depan Industri
-              </a>
+            <h2 class="h5 card-title fw-bold">
+              Mengapa Data Penting untuk AI?
             </h2>
 
-            <p class="card-text text-secondary mt-3">
-              Computer vision memungkinkan sistem memahami informasi
-              visual dari gambar atau video. Teknologi ini dapat digunakan
-              untuk membantu proses inspeksi, deteksi objek, dan analisis.
+            <p class="card-text mt-3">
+              Data menjadi salah satu komponen penting dalam
+              pengembangan sistem AI karena digunakan untuk
+              melatih dan mengevaluasi model.
             </p>
 
+            <a
+              href="blog-detail.html"
+              class="blog-link stretched-link"
+            >
+              Baca selengkapnya
+            </a>
           </div>
 
         </article>
-
       </div>
 
 
       <!-- Artikel 4 -->
       <div class="col-md-6">
+        <article class="card article-card h-100">
 
-        <article class="card article-card h-100 bg-white">
-
-          <div class="article-cover">
-            <i class="bi bi-bar-chart" aria-hidden="true"></i>
+          <div
+            class="article-cover"
+            aria-hidden="true"
+          >
+            <i class="bi bi-shield-check"></i>
           </div>
 
           <div class="card-body p-4">
-
-            <p class="small text-secondary mb-2">
-              Data &middot; 2 September 2026
+            <p class="small text-uppercase fw-semibold text-secondary">
+              AI & Keamanan
             </p>
 
-            <h2 class="h6 card-title">
-              <a
-                href="blog-detail.html"
-                class="blog-link stretched-link fw-semibold"
-              >
-                Data Bersih, Model AI Lebih Baik
-              </a>
+            <h2 class="h5 card-title fw-bold">
+              Tantangan Keamanan dalam Penggunaan AI
             </h2>
 
-            <p class="card-text text-secondary mt-3">
-              Kualitas data menjadi salah satu bagian penting dalam
-              pengembangan model AI. Data yang tidak konsisten atau
-              tidak relevan dapat memengaruhi hasil model.
+            <p class="card-text mt-3">
+              Penggunaan AI juga perlu memperhatikan keamanan,
+              privasi data, serta cara penggunaan teknologi
+              yang bertanggung jawab.
             </p>
 
+            <a
+              href="blog-detail.html"
+              class="blog-link stretched-link"
+            >
+              Baca selengkapnya
+            </a>
           </div>
 
         </article>
-
       </div>
 
     </div>
-
-
-    <!-- ===================== PAGINATION ===================== -->
-    <!-- Pagination dihapus karena halaman 2 belum tersedia. -->
-
-
-    <!-- ===================== LINK KONTAK ===================== -->
-    <div class="mt-5 rounded-3 border bg-white p-4 text-center">
-
-      <p class="mb-0 text-secondary">
-        Punya pertanyaan tentang AI?
-        <a
-          href="index.html#kontak"
-          class="contact-link fw-semibold text-decoration-underline"
-        >
-          Hubungi kami
-        </a>
-      </p>
-
-    </div>
-
   </main>
 
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer mt-5">
+  <!-- Footer -->
+  <footer class="footer py-5">
+    <div class="container">
 
-    <div class="container py-4">
+      <div class="row g-4">
 
-      <div class="row align-items-center g-3">
-
-        <div class="col-md-6">
-          <div class="fw-semibold">
+        <div class="col-md-7">
+          <h2 class="h5 footer-title">
             Feny AI
-          </div>
+          </h2>
 
           <p class="small mb-0 text-secondary">
             Solusi kecerdasan buatan untuk kebutuhan digital.
           </p>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-5">
+          <h2 class="h6 footer-title">
+            Kontak
+          </h2>
 
-          <ul class="list-unstyled d-flex justify-content-md-end gap-4 mb-0">
-
-            <li>
-              <a href="index.html">
-                Beranda
-              </a>
-            </li>
-
-            <li>
-              <a href="blog.html">
-                Blog
-              </a>
-            </li>
-
-            <li>
-              <a href="cv.html">
-                CV
-              </a>
-            </li>
-
-          </ul>
-
+          <p class="small mb-0">
+            <a
+              href="mailto:feny@example.com"
+              class="footer-link"
+            >
+              Email
+            </a>
+          </p>
         </div>
 
       </div>
 
-      <hr class="border-secondary my-4" />
+      <hr class="border-secondary my-4">
 
       <p class="small text-secondary mb-0">
-        &copy; 2026 Feny AI. Seluruh hak cipta dilindungi.
+        © 2026 Feny AI. Semua hak dilindungi.
       </p>
 
     </div>
-
   </footer>
 
 
