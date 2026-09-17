@@ -1,37 +1,47 @@
-# Arunika AI — Praktikum 2 PABWE 2026
+# Feny AI — Praktikum 2 PABWE 2026
 
-Website multi-halaman untuk perusahaan jasa AI fiktif **Arunika AI**, dibangun sesuai spesifikasi
-Praktikum 2 (CSS, Bootstrap 5, Tailwind CSS 4).
+Website pribadi dan blog sederhana yang dibuat untuk memenuhi Praktikum 2
+Pengembangan Aplikasi Berbasis Web dan Enterprise (PABWE) 2026.
 
-## Struktur
+Website ini menggunakan beberapa pendekatan teknologi frontend sesuai
+ketentuan praktikum, yaitu CSS eksternal, Bootstrap 5, Bootstrap Icons,
+dan Tailwind CSS 4.
 
-```
-├── index.html              # Landing page — HTML + CSS murni
-├── blog.html                # Daftar blog — Bootstrap 5 + Bootstrap Icons
-├── blog-detail.html         # Detail artikel blog — Bootstrap 5 + Bootstrap Icons
-├── cv.html                  # Curriculum Vitae — Tailwind CSS 4
+---
+
+## 📌 Identitas
+
+**Nama:** Feny Rika Pasaribu  
+**Program Studi:** Informatika  
+**Institusi:** Institut Teknologi Del  
+**Semester:** 5  
+**Tahun:** 2026
+
+---
+
+## 🌐 Tentang Feny AI
+
+Feny AI merupakan website pribadi yang berisi informasi mengenai profil,
+CV, serta artikel dan wawasan seputar teknologi dan kecerdasan buatan.
+
+Website ini dibuat dalam beberapa halaman yang memiliki fungsi berbeda,
+yaitu halaman utama, blog, detail artikel, dan CV.
+
+---
+
+## 📂 Struktur Project
+
+```text
+Feny-AI/
+│
 ├── assets/
 │   ├── css/
-│   │   └── style.css        # External CSS untuk index.html
-│   └── img/                 # (opsional — belum dipakai, semua visual dibuat CSS/SVG)
+│   │   └── style.css
+│   │
+│   └── img/
+│
+├── index.html
+├── blog.html
+├── blog-detail.html
+├── cv.html
 └── README.md
-```
-
-## Teknologi per halaman
-
-| Halaman | Teknologi | Catatan |
-|---|---|---|
-| `index.html` | HTML5 + CSS murni | Tanpa framework, CSS variables, Flexbox/Grid, media query |
-| `blog.html` | Bootstrap 5.3 + Bootstrap Icons | Grid card, badge, navbar, pagination |
-| `blog-detail.html` | Bootstrap 5.3 + Bootstrap Icons | Blockquote, alert, artikel terkait, form komentar |
-| `cv.html` | Tailwind CSS 4 (Play CDN) | `@theme` untuk token warna brand, utility responsive |
-
-## Brand
-
-**Arunika AI** — nama diambil dari kata *arunika* (cahaya fajar), merepresentasikan tema
-"insight yang menyingsing" untuk visual perusahaan (gradasi warna gelap → amber → rose).
-
-## Cara menjalankan
-
-Buka `index.html` langsung di browser, atau jalankan live server lokal (mis. ekstensi
-"Live Server" di VSCode) agar navigasi antar halaman berjalan mulus.
