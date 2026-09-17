@@ -3,549 +3,248 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Blog — Feny AI</title>
-  <meta
-    name="description"
-    content="Artikel dan wawasan seputar AI dari tim Feny AI: chatbot, otomasi, computer vision, dan data."
-  />
+  <meta name="description" content="Artikel dan wawasan seputar AI dari tim Feny: chatbot, otomasi, computer vision, dan data." />
 
-  <!-- Bootstrap 5 -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- CSS kustom tipis khusus halaman Blog Feny AI -->
+  <!-- Sedikit CSS kustom khusus tema Feny (tipis, tidak menggantikan Bootstrap) -->
   <style>
     :root {
-      --feny-ink: #14151f;
-      --feny-amber: #e1975c;
-      --feny-rose: #b85c6b;
-      --feny-cream: #faf7f2;
-      --feny-link: #0756a8;
+      --ak-ink: #14151f;
+      --ak-amber: #e1975c;
+      --ak-rose: #b85c6b;
+      --ak-cream: #faf7f2;
     }
-
     body {
-      font-family: "Inter", sans-serif;
-      background-color: var(--feny-cream);
-      color: var(--feny-ink);
+      font-family: 'Inter', sans-serif;
+      background-color: var(--ak-cream);
+      color: var(--ak-ink);
     }
-
-    h1,
-    h2,
-    h3,
-    .navbar-brand,
-    .card-title {
-      font-family: "Fraunces", serif;
+    h1, h2, h3, .navbar-brand, .card-title {
+      font-family: 'Fraunces', serif;
     }
-
-    /* ---------- NAVBAR ---------- */
-
-    .feny-navbar {
-      background-color: rgba(250, 247, 242, 0.95);
-    }
-
     .navbar-brand .brand-mark {
       display: inline-block;
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background: radial-gradient(
-        circle at 30% 30%,
-        var(--feny-amber),
-        var(--feny-rose) 90%
-      );
+      background: radial-gradient(circle at 30% 30%, var(--ak-amber), var(--ak-rose) 90%);
       margin-right: 6px;
       vertical-align: middle;
     }
-
-    .navbar .nav-link {
-      color: var(--feny-ink);
-    }
-
-    .navbar .nav-link:hover,
-    .navbar .nav-link:focus {
-      color: var(--feny-link);
-    }
-
-    /* ---------- HERO BLOG ---------- */
-
     .blog-hero {
-      background: linear-gradient(
-        120deg,
-        #1b2036 0%,
-        #3a3652 55%,
-        var(--feny-amber) 130%
-      );
-      color: #ffffff;
+      background: linear-gradient(120deg, #1b2036 0%, #3a3652 55%, var(--ak-amber) 130%);
+      color: #fff;
       padding: 4rem 0 3rem;
     }
-
-    .blog-hero__description {
-      max-width: 40rem;
-    }
-
-    /* ---------- COVER ARTIKEL ---------- */
-
     .article-cover {
       height: 190px;
-      border-radius: 0.5rem 0.5rem 0 0;
+      border-radius: .5rem .5rem 0 0;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2.4rem;
-      color: #ffffff;
+      color: #fff;
     }
-
-    .cover-1 {
-      background: linear-gradient(135deg, #e1975c, #b85c6b);
-    }
-
-    .cover-2 {
-      background: linear-gradient(135deg, #5b6478, #14151f);
-    }
-
-    .cover-3 {
-      background: linear-gradient(135deg, #b85c6b, #3a3652);
-    }
-
-    .cover-4 {
-      background: linear-gradient(135deg, #e1975c, #3a3652);
-    }
-
-    /* ---------- CARD ARTIKEL ---------- */
-
+    .cover-1 { background: linear-gradient(135deg, #e1975c, #b85c6b); }
+    .cover-2 { background: linear-gradient(135deg, #5b6478, #14151f); }
+    .cover-3 { background: linear-gradient(135deg, #b85c6b, #3a3652); }
+    .cover-4 { background: linear-gradient(135deg, #e1975c, #3a3652); }
     .card-blog {
-      border: 1px solid rgba(20, 21, 31, 0.08);
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+      border: 1px solid rgba(20,21,31,.08);
+      transition: transform .25s ease, box-shadow .25s ease;
     }
-
     .card-blog:hover {
       transform: translateY(-5px);
-      box-shadow: 0 1rem 2rem rgba(20, 21, 31, 0.15);
+      box-shadow: 0 1rem 2rem rgba(20,21,31,.15);
     }
-
-    .card-blog .card-title a {
-      color: var(--feny-ink) !important;
+    .btn-ak {
+      background-color: var(--ak-ink);
+      color: #fff;
     }
-
-    .card-blog .card-title a:hover,
-    .card-blog .card-title a:focus {
-      color: var(--feny-link) !important;
+    .btn-ak:hover {
+      background-color: var(--ak-amber);
+      color: #fff;
     }
-
-    /* ---------- BUTTON ---------- */
-
-    .btn-feny {
-      background-color: var(--feny-ink);
-      color: #ffffff;
-    }
-
-    .btn-feny:hover {
-      background-color: var(--feny-amber);
-      color: #ffffff;
-    }
-
-    /* ---------- FOOTER ---------- */
-
     footer.site-footer {
-      background-color: var(--feny-ink);
+      background-color: var(--ak-ink);
       color: #cbd0dc;
     }
-
-    footer.site-footer a {
-      color: #cbd0dc;
-    }
-
-    footer.site-footer a:hover,
-    footer.site-footer a:focus {
-      color: #ffffff;
-    }
-
-    /* ---------- AKSESIBILITAS ---------- */
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--feny-amber);
-      outline-offset: 2px;
-    }
+    footer.site-footer a { color: #cbd0dc; }
+    footer.site-footer a:hover { color: #fff; }
   </style>
 </head>
-
 <body>
 
   <!-- ===================== NAVBAR ===================== -->
   <header>
-    <nav class="navbar navbar-expand-lg feny-navbar">
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(250,247,242,0.95);">
       <div class="container">
-
         <a class="navbar-brand fw-semibold" href="index.html">
-          <span class="brand-mark" aria-hidden="true"></span>
-          Feny AI
+          <span class="brand-mark" aria-hidden="true"></span>Feny AI
         </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navMain"
-          aria-controls="navMain"
-          aria-expanded="false"
-          aria-label="Buka menu navigasi"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navMain">
           <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                Beranda
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="blog.html"
-              >
-                Blog
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="cv.html">
-                CV
-              </a>
-            </li>
-
+            <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="blog.html">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
           </ul>
         </div>
-
       </div>
     </nav>
   </header>
 
-
   <main>
-
     <!-- ===================== HERO BLOG ===================== -->
     <section class="blog-hero">
       <div class="container">
-
-        <p class="mb-2">
-          <i class="bi bi-stars" aria-hidden="true"></i>
-          Wawasan AI
+        <p class="mb-2"><i class="bi bi-stars"></i> Wawasan AI</p>
+        <h1 class="display-6 fw-semibold">Blog Feny AI</h1>
+        <p class="lead mb-0" style="max-width: 40rem;">
+          Catatan, studi kasus, dan panduan praktis seputar penerapan kecerdasan buatan di dunia nyata.
         </p>
-
-        <h1 class="display-6 fw-semibold">
-          Blog Feny AI
-        </h1>
-
-        <p class="lead mb-0 blog-hero__description">
-          Catatan, studi kasus, dan panduan praktis seputar penerapan
-          kecerdasan buatan di dunia nyata.
-        </p>
-
       </div>
     </section>
 
-
     <!-- ===================== DAFTAR ARTIKEL ===================== -->
-    <section class="py-5" aria-labelledby="daftar-artikel">
-
+    <section class="py-5">
       <div class="container">
-
-        <h2 id="daftar-artikel" class="visually-hidden">
-          Daftar Artikel Feny AI
-        </h2>
-
         <div class="row g-4">
 
-          <!-- ===================== ARTIKEL 1 ===================== -->
+          <!-- Artikel 1 -->
           <div class="col-12 col-md-6 col-lg-3">
-
             <article class="card card-blog h-100">
-
-              <div
-                class="article-cover cover-1"
-                role="img"
-                aria-label="Ilustrasi chatbot"
-              >
-                <i class="bi bi-chat-dots" aria-hidden="true"></i>
-              </div>
-
+              <div class="article-cover cover-1"><i class="bi bi-chat-dots"></i></div>
               <div class="card-body d-flex flex-column">
-
                 <span class="badge rounded-pill text-bg-warning mb-2 align-self-start">
-                  <i class="bi bi-chat-square-text" aria-hidden="true"></i>
-                  Chatbot
+                  <i class="bi bi-chat-square-text"></i> Chatbot
                 </span>
-
-                <h2 class="h6 card-title">
-                  <a
-                    href="blog-detail.html"
-                    class="text-decoration-none stretched-link"
-                  >
+                <h3 class="h6 card-title">
+                  <a href="blog-detail.html" class="text-decoration-none text-dark stretched-link">
                     Mengapa Chatbot Anda Perlu Lebih dari Sekadar Skrip
                   </a>
-                </h2>
-
+                </h3>
                 <p class="card-text small text-muted flex-grow-1">
-                  Chatbot berbasis aturan sering gagal saat pertanyaan
-                  pelanggan makin bervariasi. Ini alasannya.
+                  Chatbot berbasis aturan sering gagal saat pertanyaan pelanggan makin bervariasi. Ini alasannya.
                 </p>
-
-                <div
-                  class="d-flex justify-content-between align-items-center small text-muted mt-2"
-                >
-                  <span>
-                    <i class="bi bi-person" aria-hidden="true"></i>
-                    Tim Feny
-                  </span>
-
-                  <span>
-                    <i class="bi bi-calendar3" aria-hidden="true"></i>
-                    3 Sep 2026
-                  </span>
+                <div class="d-flex justify-content-between align-items-center small text-muted mt-2">
+                  <span><i class="bi bi-person"></i> Tim Feny </span>
+                  <span><i class="bi bi-calendar3"></i> 3 Sep 2026</span>
                 </div>
-
               </div>
             </article>
-
           </div>
 
-
-          <!-- ===================== ARTIKEL 2 ===================== -->
+          <!-- Artikel 2 -->
           <div class="col-12 col-md-6 col-lg-3">
-
             <article class="card card-blog h-100">
-
-              <div
-                class="article-cover cover-2"
-                role="img"
-                aria-label="Ilustrasi otomasi"
-              >
-                <i
-                  class="bi bi-gear-wide-connected"
-                  aria-hidden="true"
-                ></i>
-              </div>
-
+              <div class="article-cover cover-2"><i class="bi bi-gear-wide-connected"></i></div>
               <div class="card-body d-flex flex-column">
-
                 <span class="badge rounded-pill text-bg-secondary mb-2 align-self-start">
-                  <i class="bi bi-robot" aria-hidden="true"></i>
-                  Otomasi
+                  <i class="bi bi-robot"></i> Otomasi
                 </span>
-
-                <h2 class="h6 card-title">
-                  <a
-                    href="blog-detail.html"
-                    class="text-decoration-none stretched-link"
-                  >
+                <h3 class="h6 card-title">
+                  <a href="blog-detail.html" class="text-decoration-none text-dark stretched-link">
                     5 Proses Bisnis yang Paling Layak Diotomasi Lebih Dulu
                   </a>
-                </h2>
-
+                </h3>
                 <p class="card-text small text-muted flex-grow-1">
-                  Tidak semua proses cocok diotomasi sekaligus. Berikut
-                  kerangka prioritas yang kami pakai.
+                  Tidak semua proses cocok diotomasi sekaligus. Berikut kerangka prioritas yang kami pakai.
                 </p>
-
-                <div
-                  class="d-flex justify-content-between align-items-center small text-muted mt-2"
-                >
-                  <span>
-                    <i class="bi bi-person" aria-hidden="true"></i>
-                    R. Sinaga
-                  </span>
-
-                  <span>
-                    <i class="bi bi-calendar3" aria-hidden="true"></i>
-                    28 Agu 2026
-                  </span>
+                <div class="d-flex justify-content-between align-items-center small text-muted mt-2">
+                  <span><i class="bi bi-person"></i> R. Sinaga</span>
+                  <span><i class="bi bi-calendar3"></i> 28 Agu 2026</span>
                 </div>
-
               </div>
             </article>
-
           </div>
 
-
-          <!-- ===================== ARTIKEL 3 ===================== -->
+          <!-- Artikel 3 -->
           <div class="col-12 col-md-6 col-lg-3">
-
             <article class="card card-blog h-100">
-
-              <div
-                class="article-cover cover-3"
-                role="img"
-                aria-label="Ilustrasi computer vision"
-              >
-                <i class="bi bi-eye" aria-hidden="true"></i>
-              </div>
-
+              <div class="article-cover cover-3"><i class="bi bi-eye"></i></div>
               <div class="card-body d-flex flex-column">
-
                 <span class="badge rounded-pill text-bg-danger mb-2 align-self-start">
-                  <i class="bi bi-camera-video" aria-hidden="true"></i>
-                  Computer Vision
+                  <i class="bi bi-camera-video"></i> Computer Vision
                 </span>
-
-                <h2 class="h6 card-title">
-                  <a
-                    href="blog-detail.html"
-                    class="text-decoration-none stretched-link"
-                  >
+                <h3 class="h6 card-title">
+                  <a href="blog-detail.html" class="text-decoration-none text-dark stretched-link">
                     Deteksi Objek di Lini Produksi: Studi Kasus Manufaktur
                   </a>
-                </h2>
-
+                </h3>
                 <p class="card-text small text-muted flex-grow-1">
-                  Bagaimana model computer vision menurunkan cacat produk
-                  hingga 32% pada mitra kami.
+                  Bagaimana model computer vision menurunkan cacat produk hingga 32% pada mitra kami.
                 </p>
-
-                <div
-                  class="d-flex justify-content-between align-items-center small text-muted mt-2"
-                >
-                  <span>
-                    <i class="bi bi-person" aria-hidden="true"></i>
-                    D. Manalu
-                  </span>
-
-                  <span>
-                    <i class="bi bi-calendar3" aria-hidden="true"></i>
-                    19 Agu 2026
-                  </span>
+                <div class="d-flex justify-content-between align-items-center small text-muted mt-2">
+                  <span><i class="bi bi-person"></i> D. Manalu</span>
+                  <span><i class="bi bi-calendar3"></i> 19 Agu 2026</span>
                 </div>
-
               </div>
             </article>
-
           </div>
 
-
-          <!-- ===================== ARTIKEL 4 ===================== -->
+          <!-- Artikel 4 -->
           <div class="col-12 col-md-6 col-lg-3">
-
             <article class="card card-blog h-100">
-
-              <div
-                class="article-cover cover-4"
-                role="img"
-                aria-label="Ilustrasi data"
-              >
-                <i class="bi bi-bar-chart" aria-hidden="true"></i>
-              </div>
-
+              <div class="article-cover cover-4"><i class="bi bi-bar-chart"></i></div>
               <div class="card-body d-flex flex-column">
-
                 <span class="badge rounded-pill text-bg-success mb-2 align-self-start">
-                  <i class="bi bi-database" aria-hidden="true"></i>
-                  Data
+                  <i class="bi bi-database"></i> Data
                 </span>
-
-                <h2 class="h6 card-title">
-                  <a
-                    href="blog-detail.html"
-                    class="text-decoration-none stretched-link"
-                  >
+                <h3 class="h6 card-title">
+                  <a href="blog-detail.html" class="text-decoration-none text-dark stretched-link">
                     Data Kotor, Model Buruk: Cara Membangun Fondasi Data yang Kuat
                   </a>
-                </h2>
-
+                </h3>
                 <p class="card-text small text-muted flex-grow-1">
-                  Sebelum bicara model canggih, pastikan pipeline data
-                  Anda bebas dari empat masalah umum ini.
+                  Sebelum bicara model canggih, pastikan pipeline data Anda bebas dari empat masalah umum ini.
                 </p>
-
-                <div
-                  class="d-flex justify-content-between align-items-center small text-muted mt-2"
-                >
-                  <span>
-                    <i class="bi bi-person" aria-hidden="true"></i>
-                    Tim Feny
-                  </span>
-
-                  <span>
-                    <i class="bi bi-calendar3" aria-hidden="true"></i>
-                    10 Agu 2026
-                  </span>
+                <div class="d-flex justify-content-between align-items-center small text-muted mt-2">
+                  <span><i class="bi bi-person"></i> Tim Feny</span>
+                  <span><i class="bi bi-calendar3"></i> 10 Agu 2026</span>
                 </div>
-
               </div>
             </article>
-
           </div>
 
         </div>
 
+        <!-- Pagination (opsional) -->
+        <nav class="d-flex justify-content-center mt-5" aria-label="Navigasi halaman blog">
+          <ul class="pagination">
+            <li class="page-item active"><span class="page-link">1</span></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">Berikutnya</a></li>
+          </ul>
+        </nav>
       </div>
     </section>
-
   </main>
-
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer py-4">
-
-    <div
-      class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2"
-    >
-
-      <span class="fw-semibold">
-        Feny AI
-      </span>
-
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span class="fw-semibold">Feny AI</span>
       <div class="d-flex gap-3">
-
-        <a href="index.html">
-          Beranda
-        </a>
-
-        <a href="blog.html">
-          Blog
-        </a>
-
-        <a href="cv.html">
-          CV
-        </a>
-
+        <a href="index.html">Beranda</a>
+        <a href="blog.html">Blog</a>
+        <a href="cv.html">CV</a>
       </div>
-
-      <small>
-        &copy; 2026 Feny AI
-      </small>
-
+      <small>&copy; 2026 Feny AI</small>
     </div>
-
   </footer>
 
-
-  <!-- Bootstrap Bundle JS -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  ></script>
-
+  <!-- Bootstrap Bundle JS (untuk navbar toggler & komponen interaktif) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -3,753 +3,265 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Mengapa Chatbot Anda Perlu Lebih dari Sekadar Skrip — Feny AI</title>
+  <meta name="description" content="Artikel Feny AI tentang keterbatasan chatbot berbasis skrip dan alasan beralih ke pendekatan berbasis NLP." />
 
-  <meta
-    name="description"
-    content="Artikel Feny AI tentang keterbatasan chatbot berbasis skrip dan alasan beralih ke pendekatan berbasis NLP."
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-  <!-- Bootstrap 5 -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-
-  <!-- Bootstrap Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-  />
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- CSS kustom halaman detail Blog Feny AI -->
   <style>
     :root {
-      --feny-ink: #14151f;
-      --feny-amber: #e1975c;
-      --feny-rose: #b85c6b;
-      --feny-cream: #faf7f2;
-      --feny-link: #0756a8;
+      --ak-ink: #14151f;
+      --ak-amber: #e1975c;
+      --ak-rose: #b85c6b;
+      --ak-cream: #faf7f2;
     }
-
     body {
-      font-family: "Inter", sans-serif;
-      background-color: var(--feny-cream);
-      color: var(--feny-ink);
+      font-family: 'Inter', sans-serif;
+      background-color: var(--ak-cream);
+      color: var(--ak-ink);
     }
-
-    h1,
-    h2,
-    h3,
-    .navbar-brand {
-      font-family: "Fraunces", serif;
+    h1, h2, h3, .navbar-brand {
+      font-family: 'Fraunces', serif;
     }
-
-    /* ---------- NAVBAR ---------- */
-
-    .feny-navbar {
-      background-color: rgba(250, 247, 242, 0.95);
-    }
-
     .navbar-brand .brand-mark {
       display: inline-block;
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background: radial-gradient(
-        circle at 30% 30%,
-        var(--feny-amber),
-        var(--feny-rose) 90%
-      );
+      background: radial-gradient(circle at 30% 30%, var(--ak-amber), var(--ak-rose) 90%);
       margin-right: 6px;
       vertical-align: middle;
     }
-
-    .navbar .nav-link {
-      color: var(--feny-ink);
-    }
-
-    .navbar .nav-link:hover,
-    .navbar .nav-link:focus {
-      color: var(--feny-link);
-    }
-
-    /* ---------- KONTEN ARTIKEL ---------- */
-
-    .article-container {
-      max-width: 800px;
-    }
-
     .cover-detail {
       height: 320px;
-      border-radius: 0.75rem;
-      background: linear-gradient(
-        135deg,
-        #e1975c,
-        #b85c6b
-      );
+      border-radius: .75rem;
+      background: linear-gradient(135deg, #e1975c, #b85c6b);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
+      color: #fff;
       font-size: 3.5rem;
     }
-
     article.post-body p {
       font-size: 1.05rem;
       line-height: 1.75;
     }
-
-    /* ---------- BLOCKQUOTE ---------- */
-
-    blockquote.feny-quote {
-      border-left: 4px solid var(--feny-amber);
-      background-color: #ffffff;
+    blockquote.ak-quote {
+      border-left: 4px solid var(--ak-amber);
+      background-color: #fff;
       padding: 1.2rem 1.5rem;
-      border-radius: 0 0.5rem 0.5rem 0;
-      font-family: "Fraunces", serif;
+      border-radius: 0 .5rem .5rem 0;
+      font-family: 'Fraunces', serif;
       font-size: 1.15rem;
       font-weight: 600;
-      color: var(--feny-ink);
+      color: var(--ak-ink);
     }
-
-    /* ---------- LINK ---------- */
-
-    .article-link {
-      color: var(--feny-link);
-    }
-
-    .article-link:hover,
-    .article-link:focus {
-      color: #043f7c;
-    }
-
-    /* ---------- ARTIKEL TERKAIT ---------- */
-
-    .related-article {
-      color: var(--feny-ink);
-    }
-
-    .related-article:hover,
-    .related-article:focus {
-      color: var(--feny-link);
-    }
-
     .related-cover {
-      width: 90px;
       height: 90px;
-      border-radius: 0.4rem;
+      border-radius: .4rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
+      color: #fff;
       font-size: 1.4rem;
       flex-shrink: 0;
     }
-
-    .related-cover-1 {
-      background: linear-gradient(
-        135deg,
-        #5b6478,
-        #14151f
-      );
-    }
-
-    .related-cover-2 {
-      background: linear-gradient(
-        135deg,
-        #e1975c,
-        #3a3652
-      );
-    }
-
-    /* ---------- KOMENTAR ---------- */
-
     .comment-avatar {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: linear-gradient(
-        135deg,
-        var(--feny-amber),
-        var(--feny-rose)
-      );
+      background: linear-gradient(135deg, var(--ak-amber), var(--ak-rose));
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
+      color: #fff;
       flex-shrink: 0;
     }
-
-    .comment-box {
-      background-color: #ffffff;
-    }
-
-    /* ---------- FOOTER ---------- */
-
     footer.site-footer {
-      background-color: var(--feny-ink);
+      background-color: var(--ak-ink);
       color: #cbd0dc;
     }
-
-    footer.site-footer a {
-      color: #cbd0dc;
-    }
-
-    footer.site-footer a:hover,
-    footer.site-footer a:focus {
-      color: #ffffff;
-    }
-
-    /* ---------- AKSESIBILITAS ---------- */
-
-    a:focus-visible,
-    button:focus-visible,
-    textarea:focus-visible {
-      outline: 3px solid var(--feny-amber);
-      outline-offset: 2px;
-    }
-
-    /* ---------- RESPONSIVE ---------- */
-
-    @media (max-width: 576px) {
-      .cover-detail {
-        height: 220px;
-        font-size: 2.8rem;
-      }
-
-      .related-cover {
-        width: 70px;
-        height: 70px;
-      }
-    }
+    footer.site-footer a { color: #cbd0dc; }
+    footer.site-footer a:hover { color: #fff; }
   </style>
 </head>
-
 <body>
 
   <!-- ===================== NAVBAR ===================== -->
   <header>
-    <nav class="navbar navbar-expand-lg feny-navbar">
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(250,247,242,0.95);">
       <div class="container">
-
         <a class="navbar-brand fw-semibold" href="index.html">
-          <span class="brand-mark" aria-hidden="true"></span>
-          Feny AI
+          <span class="brand-mark" aria-hidden="true"></span>Feny AI
         </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navMain"
-          aria-controls="navMain"
-          aria-expanded="false"
-          aria-label="Buka menu navigasi"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navMain">
           <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                Beranda
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="blog.html"
-              >
-                Blog
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="cv.html">
-                CV
-              </a>
-            </li>
-
+            <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="blog.html">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
           </ul>
         </div>
-
       </div>
     </nav>
   </header>
 
-
-  <!-- ===================== MAIN ===================== -->
   <main class="py-5">
+    <div class="container" style="max-width: 800px;">
 
-    <div class="container article-container">
-
-      <!-- ===================== BREADCRUMB ===================== -->
+      <!-- Breadcrumb sederhana -->
       <nav aria-label="breadcrumb" class="mb-3">
-
         <ol class="breadcrumb small">
-
-          <li class="breadcrumb-item">
-            <a
-              href="blog.html"
-              class="text-decoration-none article-link"
-            >
-              Blog
-            </a>
-          </li>
-
-          <li
-            class="breadcrumb-item active"
-            aria-current="page"
-          >
-            Chatbot Cerdas
-          </li>
-
+          <li class="breadcrumb-item"><a href="blog.html" class="text-decoration-none">Blog</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Chatbot Cerdas</li>
         </ol>
-
       </nav>
 
-
       <!-- ===================== COVER ===================== -->
-      <div
-        class="cover-detail mb-4"
-        role="img"
-        aria-label="Ilustrasi chatbot"
-      >
-        <i
-          class="bi bi-chat-dots"
-          aria-hidden="true"
-        ></i>
+      <div class="cover-detail mb-4">
+        <i class="bi bi-chat-dots"></i>
       </div>
-
 
       <!-- ===================== META ===================== -->
-      <div
-        class="d-flex flex-wrap align-items-center gap-3 small text-muted mb-3"
-      >
-
-        <span class="badge rounded-pill text-bg-warning">
-          <i
-            class="bi bi-chat-square-text"
-            aria-hidden="true"
-          ></i>
-          Chatbot
-        </span>
-
-        <span>
-          <i
-            class="bi bi-person"
-            aria-hidden="true"
-          ></i>
-          Tim Feny
-        </span>
-
-        <span>
-          <i
-            class="bi bi-calendar3"
-            aria-hidden="true"
-          ></i>
-          3 September 2026
-        </span>
-
-        <span>
-          <i
-            class="bi bi-clock"
-            aria-hidden="true"
-          ></i>
-          6 menit baca
-        </span>
-
+      <div class="d-flex flex-wrap align-items-center gap-3 small text-muted mb-3">
+        <span class="badge rounded-pill text-bg-warning"><i class="bi bi-chat-square-text"></i> Chatbot</span>
+        <span><i class="bi bi-person"></i> Tim Feny</span>
+        <span><i class="bi bi-calendar3"></i> 3 September 2026</span>
+        <span><i class="bi bi-clock"></i> 6 menit baca</span>
       </div>
 
-
       <!-- ===================== JUDUL ===================== -->
-      <h1 class="mb-4">
-        Mengapa Chatbot Anda Perlu Lebih dari Sekadar Skrip
-      </h1>
-
+      <h1 class="mb-4">Mengapa Chatbot Anda Perlu Lebih dari Sekadar Skrip</h1>
 
       <!-- ===================== ISI ARTIKEL ===================== -->
       <article class="post-body">
-
         <p>
-          Banyak perusahaan memulai perjalanan otomasi layanan pelanggan
-          dengan chatbot berbasis aturan, yaitu sistem yang menjawab
-          berdasarkan kata kunci tetap dan alur pertanyaan yang sudah
-          ditentukan sebelumnya. Pendekatan ini murah dan cepat dibangun,
-          tetapi mulai menunjukkan keterbatasan begitu volume dan variasi
-          pertanyaan pelanggan meningkat.
+          Banyak perusahaan memulai perjalanan otomasi layanan pelanggan dengan chatbot berbasis aturan —
+          sistem yang menjawab berdasarkan kata kunci tetap dan alur pertanyaan yang sudah ditentukan sebelumnya.
+          Pendekatan ini murah dan cepat dibangun, tetapi mulai menunjukkan keterbatasan begitu volume dan
+          variasi pertanyaan pelanggan meningkat.
+        </p>
+        <p>
+          Masalah utamanya sederhana: bahasa manusia tidak pernah benar-benar baku. Satu pertanyaan yang sama
+          bisa diucapkan dengan puluhan cara berbeda, lengkap dengan typo, singkatan, atau campuran bahasa.
+          Chatbot berbasis skrip akan gagal begitu pertanyaan sedikit menyimpang dari pola yang sudah
+          diprogram, dan pelanggan pun berakhir frustrasi berbicara dengan mesin yang terasa kaku.
+        </p>
+        <p>
+          Di sinilah pendekatan berbasis <em>Natural Language Processing</em> (NLP) menunjukkan perbedaannya.
+          Alih-alih mencocokkan kata kunci, model NLP memahami maksud (<em>intent</em>) di balik kalimat,
+          sehingga mampu menangani variasi bahasa yang jauh lebih luas — termasuk konteks percakapan
+          sebelumnya. Di Feny AI, kami membangun chatbot yang menggabungkan pemahaman intent dengan basis pengetahuan spesifik bisnis klien, sehingga jawaban tetap akurat dan relevan.
         </p>
 
-        <p>
-          Masalah utamanya sederhana: bahasa manusia tidak pernah benar-benar
-          baku. Satu pertanyaan yang sama bisa diucapkan dengan puluhan cara
-          berbeda, lengkap dengan typo, singkatan, atau campuran bahasa.
-          Chatbot berbasis skrip akan gagal begitu pertanyaan sedikit
-          menyimpang dari pola yang sudah diprogram, dan pelanggan pun
-          berakhir frustrasi berbicara dengan mesin yang terasa kaku.
-        </p>
-
-        <p>
-          Di sinilah pendekatan berbasis
-          <em>Natural Language Processing</em> (NLP) menunjukkan perbedaannya.
-          Alih-alih mencocokkan kata kunci, model NLP memahami maksud
-          (<em>intent</em>) di balik kalimat, sehingga mampu menangani
-          variasi bahasa yang jauh lebih luas, termasuk konteks percakapan
-          sebelumnya. Di Feny AI, kami membangun chatbot yang menggabungkan
-          pemahaman intent dengan basis pengetahuan spesifik bisnis klien,
-          sehingga jawaban tetap akurat dan relevan.
-        </p>
-
-
-        <!-- ===================== BLOCKQUOTE ===================== -->
-        <blockquote class="feny-quote my-4">
-          "Chatbot yang baik bukan yang paling banyak fitur, tapi yang
-          paling jarang membuat pelanggan mengulang pertanyaan yang sama."
+        <blockquote class="ak-quote my-4">
+          "Chatbot yang baik bukan yang paling banyak fitur, tapi yang paling jarang membuat pelanggan
+          mengulang pertanyaan yang sama."
         </blockquote>
 
-
         <p>
-          Migrasi dari skrip ke NLP tidak harus dilakukan sekaligus.
-          Kami biasanya menyarankan klien memulai dari titik kontak dengan
-          volume pertanyaan tertinggi, biasanya FAQ produk atau status
-          pesanan, lalu memperluas cakupan secara bertahap sambil memantau
-          tingkat keberhasilan resolusi otomatis.
+          Migrasi dari skrip ke NLP tidak harus dilakukan sekaligus. Kami biasanya menyarankan klien memulai
+          dari titik kontak dengan volume pertanyaan tertinggi — biasanya FAQ produk atau status pesanan —
+          lalu memperluas cakupan secara bertahap sambil memantau tingkat keberhasilan resolusi otomatis.
         </p>
 
-
-        <!-- ===================== POIN UTAMA ===================== -->
-        <h2 class="h4 mt-5 mb-3">
-          Tiga tanda chatbot Anda perlu ditingkatkan
-        </h2>
-
+        <h2 class="h4 mt-5 mb-3">Tiga tanda chatbot Anda perlu ditingkatkan</h2>
         <ul>
-          <li>
-            Tingkat eskalasi ke agen manusia terus meningkat meski volume
-            pertanyaan stabil.
-          </li>
-
-          <li>
-            Pelanggan sering mengulang pertanyaan dengan kata-kata berbeda
-            karena jawaban pertama tidak relevan.
-          </li>
-
-          <li>
-            Tim Anda menghabiskan waktu terus-menerus menambah aturan baru
-            tanpa penurunan tiket yang berarti.
-          </li>
+          <li>Tingkat eskalasi ke agen manusia terus meningkat meski volume pertanyaan stabil.</li>
+          <li>Pelanggan sering mengulang pertanyaan dengan kata-kata berbeda karena jawaban pertama tidak relevan.</li>
+          <li>Tim Anda menghabiskan waktu terus-menerus menambah aturan baru tanpa penurunan tiket yang berarti.</li>
         </ul>
 
-
-        <!-- ===================== ALERT ===================== -->
-        <div
-          class="alert alert-info d-flex align-items-start gap-2 mt-4"
-          role="alert"
-        >
-
-          <i
-            class="bi bi-info-circle-fill mt-1"
-            aria-hidden="true"
-          ></i>
-
+        <div class="alert alert-info d-flex align-items-start gap-2 mt-4" role="alert">
+          <i class="bi bi-info-circle-fill mt-1"></i>
           <div>
-            Ingin tahu apakah chatbot bisnis Anda sudah waktunya di-upgrade
-            ke NLP? Tim kami menyediakan audit singkat secara gratis.
-            Hubungi kami lewat halaman
-            <a
-              href="index.html#kontak"
-              class="article-link"
-            >
-              kontak
-            </a>.
+            Ingin tahu apakah chatbot bisnis Anda sudah waktunya di-upgrade ke NLP? Tim kami menyediakan
+            audit singkat secara gratis — hubungi kami lewat halaman <a href="index.html#kontak">kontak</a>.
           </div>
-
         </div>
-
       </article>
 
-
       <!-- ===================== ARTIKEL TERKAIT ===================== -->
-      <section
-        class="mt-5"
-        aria-labelledby="artikel-terkait"
-      >
-
-        <h2
-          id="artikel-terkait"
-          class="h5 mb-3"
-        >
-          Artikel terkait
-        </h2>
-
+      <section class="mt-5">
+        <h2 class="h5 mb-3">Artikel terkait</h2>
         <div class="row g-3">
-
-          <!-- Artikel terkait 1 -->
           <div class="col-md-6">
-
-            <a
-              href="blog-detail.html"
-              class="related-article d-flex gap-3 text-decoration-none p-2 rounded border"
-            >
-
-              <div
-                class="related-cover related-cover-1"
-                role="img"
-                aria-label="Ilustrasi otomasi"
-              >
-                <i
-                  class="bi bi-gear-wide-connected"
-                  aria-hidden="true"
-                ></i>
+            <a href="blog-detail.html" class="d-flex gap-3 text-decoration-none text-dark p-2 rounded border">
+              <div class="related-cover" style="background: linear-gradient(135deg, #5b6478, #14151f);">
+                <i class="bi bi-gear-wide-connected"></i>
               </div>
-
               <div>
-
-                <p class="fw-semibold mb-1 small">
-                  5 Proses Bisnis yang Paling Layak Diotomasi Lebih Dulu
-                </p>
-
-                <p class="text-muted small mb-0">
-                  <i
-                    class="bi bi-calendar3"
-                    aria-hidden="true"
-                  ></i>
-                  28 Agu 2026
-                </p>
-
+                <p class="fw-semibold mb-1 small">5 Proses Bisnis yang Paling Layak Diotomasi Lebih Dulu</p>
+                <p class="text-muted small mb-0"><i class="bi bi-calendar3"></i> 28 Agu 2026</p>
               </div>
-
             </a>
-
           </div>
-
-
-          <!-- Artikel terkait 2 -->
           <div class="col-md-6">
-
-            <a
-              href="blog-detail.html"
-              class="related-article d-flex gap-3 text-decoration-none p-2 rounded border"
-            >
-
-              <div
-                class="related-cover related-cover-2"
-                role="img"
-                aria-label="Ilustrasi data"
-              >
-                <i
-                  class="bi bi-bar-chart"
-                  aria-hidden="true"
-                ></i>
+            <a href="blog-detail.html" class="d-flex gap-3 text-decoration-none text-dark p-2 rounded border">
+              <div class="related-cover" style="background: linear-gradient(135deg, #e1975c, #3a3652);">
+                <i class="bi bi-bar-chart"></i>
               </div>
-
               <div>
-
-                <p class="fw-semibold mb-1 small">
-                  Data Kotor, Model Buruk: Cara Membangun Fondasi Data yang Kuat
-                </p>
-
-                <p class="text-muted small mb-0">
-                  <i
-                    class="bi bi-calendar3"
-                    aria-hidden="true"
-                  ></i>
-                  10 Agu 2026
-                </p>
-
+                <p class="fw-semibold mb-1 small">Data Kotor, Model Buruk: Cara Membangun Fondasi Data yang Kuat</p>
+                <p class="text-muted small mb-0"><i class="bi bi-calendar3"></i> 10 Agu 2026</p>
               </div>
-
             </a>
-
           </div>
-
         </div>
-
       </section>
 
-
       <!-- ===================== KOMENTAR ===================== -->
-      <section
-        class="mt-5"
-        aria-labelledby="bagian-komentar"
-      >
+      <section class="mt-5">
+        <h2 class="h5 mb-3"><i class="bi bi-chat-left-text"></i> Komentar (2)</h2>
 
-        <h2
-          id="bagian-komentar"
-          class="h5 mb-3"
-        >
-          <i
-            class="bi bi-chat-left-text"
-            aria-hidden="true"
-          ></i>
-          Komentar (2)
-        </h2>
-
-
-        <!-- Komentar 1 -->
         <div class="d-flex gap-3 mb-3">
-
-          <div
-            class="comment-avatar"
-            aria-hidden="true"
-          >
-            <i class="bi bi-person-fill"></i>
+          <div class="comment-avatar"><i class="bi bi-person-fill"></i></div>
+          <div class="bg-white rounded p-3 border flex-grow-1">
+            <p class="fw-semibold mb-1 small">Ratna P. <span class="text-muted fw-normal">— 4 Sep 2026</span></p>
+            <p class="mb-0 small">Studi kasus di bagian FAQ produknya relevan banget, kami mengalami hal serupa.</p>
           </div>
-
-          <div class="comment-box rounded p-3 border flex-grow-1">
-
-            <p class="fw-semibold mb-1 small">
-              Ratna P.
-              <span class="text-muted fw-normal">
-                — 4 Sep 2026
-              </span>
-            </p>
-
-            <p class="mb-0 small">
-              Studi kasus di bagian FAQ produknya relevan banget,
-              kami mengalami hal serupa.
-            </p>
-
-          </div>
-
         </div>
-
-
-        <!-- Komentar 2 -->
         <div class="d-flex gap-3 mb-4">
-
-          <div
-            class="comment-avatar"
-            aria-hidden="true"
-          >
-            <i class="bi bi-person-fill"></i>
+          <div class="comment-avatar"><i class="bi bi-person-fill"></i></div>
+          <div class="bg-white rounded p-3 border flex-grow-1">
+            <p class="fw-semibold mb-1 small">Yoga S. <span class="text-muted fw-normal">— 5 Sep 2026</span></p>
+            <p class="mb-0 small">Apakah ada rekomendasi tools untuk mulai eksperimen NLP skala kecil?</p>
           </div>
-
-          <div class="comment-box rounded p-3 border flex-grow-1">
-
-            <p class="fw-semibold mb-1 small">
-              Yoga S.
-              <span class="text-muted fw-normal">
-                — 5 Sep 2026
-              </span>
-            </p>
-
-            <p class="mb-0 small">
-              Apakah ada rekomendasi tools untuk mulai eksperimen
-              NLP skala kecil?
-            </p>
-
-          </div>
-
         </div>
 
-
-        <!-- Form komentar -->
-        <form
-          class="d-flex gap-3"
-          action="#"
-          method="post"
-        >
-
-          <div
-            class="comment-avatar"
-            aria-hidden="true"
-          >
-            <i class="bi bi-person"></i>
-          </div>
-
+        <form class="d-flex gap-3" action="#" method="post">
+          <div class="comment-avatar"><i class="bi bi-person"></i></div>
           <div class="flex-grow-1">
-
-            <label
-              for="comment"
-              class="visually-hidden"
-            >
-              Tulis komentar
-            </label>
-
-            <textarea
-              id="comment"
-              name="comment"
-              class="form-control mb-2"
-              rows="3"
-              placeholder="Tulis komentar Anda..."
-              required
-            ></textarea>
-
-            <button
-              type="submit"
-              class="btn btn-feny"
-            >
-              <i
-                class="bi bi-send"
-                aria-hidden="true"
-              ></i>
-              Kirim Komentar
+            <textarea class="form-control mb-2" rows="3" placeholder="Tulis komentar Anda..." required></textarea>
+            <button type="submit" class="btn btn-ak text-white" style="background-color: var(--ak-ink);">
+              <i class="bi bi-send"></i> Kirim Komentar
             </button>
-
           </div>
-
         </form>
-
       </section>
 
     </div>
-
   </main>
-
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer py-4">
-
-    <div
-      class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2"
-    >
-
-      <span class="fw-semibold">
-        Feny AI
-      </span>
-
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span class="fw-semibold">Feny AI</span>
       <div class="d-flex gap-3">
-
-        <a href="index.html">
-          Beranda
-        </a>
-
-        <a href="blog.html">
-          Blog
-        </a>
-
-        <a href="cv.html">
-          CV
-        </a>
-
+        <a href="index.html">Beranda</a>
+        <a href="blog.html">Blog</a>
+        <a href="cv.html">CV</a>
       </div>
-
-      <small>
-        &copy; 2026 Feny AI
-      </small>
-
+      <small>&copy; 2026 Feny AI</small>
     </div>
-
   </footer>
 
-
-  <!-- Bootstrap Bundle JS -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  ></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

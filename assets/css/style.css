@@ -3,6 +3,8 @@
    Ditulis sebagai CSS murni (tanpa framework) sesuai spesifikasi.
    ========================================================= */
 
+
+/* ---------- 1. CSS VARIABLES (Design Tokens) ---------- */
 :root {
   --ink: #14151f;
   --cream: #faf7f2;
@@ -27,10 +29,7 @@
 }
 
 
-/* =========================================================
-   RESET
-   ========================================================= */
-
+/* ---------- 2. RESET & BASE ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -43,9 +42,10 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--cream);
   color: var(--ink);
+  background-color: var(--cream);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -58,87 +58,72 @@ a {
   text-decoration: none;
 }
 
-button,
-input,
-textarea {
-  font: inherit;
+ul {
+  list-style: none;
 }
-
-
-/* =========================================================
-   GLOBAL
-   ========================================================= */
 
 .container {
-  width: min(100% - 40px, var(--container-width));
+  width: 100%;
+  max-width: var(--container-width);
   margin-inline: auto;
+  padding-inline: 1.5rem;
 }
 
-.section {
-  padding: 88px 0;
-}
-
-.section-heading {
-  max-width: 680px;
-  margin-bottom: 42px;
-}
-
-.section-eyebrow {
-  display: inline-block;
-  margin-bottom: 10px;
-  color: var(--amber-deep);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.section-title {
+h1,
+h2,
+h3 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  line-height: 1.1;
-  margin-bottom: 14px;
-}
-
-.section-description {
-  color: var(--slate);
-  max-width: 620px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
 }
 
 
-/* =========================================================
-   NAVBAR
-   ========================================================= */
+/* Fokus keyboard tetap terlihat demi aksesibilitas */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
 
+
+/* ---------- 3. NAVBAR (Flexbox) ---------- */
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 1000;
-  background-color: rgba(250, 247, 242, 0.95);
+  z-index: 50;
+  background-color: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(20, 21, 31, 0.08);
-  backdrop-filter: blur(12px);
 }
 
-.navbar-inner {
-  min-height: 76px;
+/* Class tambahan untuk navbar pada halaman Blog */
+.navbar-feny {
+  background-color: rgba(250, 247, 242, 0.92);
+}
+
+.navbar__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  padding-block: 1.1rem;
 }
 
 .brand {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.6rem;
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
-.brand-mark {
-  width: 30px;
-  height: 30px;
+.brand__mark {
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: radial-gradient(
     circle at 30% 30%,
@@ -151,149 +136,126 @@ textarea {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
-  list-style: none;
+  gap: 2rem;
 }
 
 .nav-links a {
-  position: relative;
-  color: var(--slate);
   font-size: 0.95rem;
-  font-weight: 600;
+  color: var(--slate);
   transition: color var(--transition-fast);
+  position: relative;
 }
 
 .nav-links a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -7px;
+  bottom: -4px;
   width: 0;
   height: 2px;
-  background-color: var(--amber-deep);
+  background-color: var(--amber);
   transition: width var(--transition-fast);
 }
 
-.nav-links a:hover,
-.nav-links a:focus {
+.nav-links a:hover {
   color: var(--ink);
 }
 
-.nav-links a:hover::after,
-.nav-links a:focus::after {
+.nav-links a:hover::after {
   width: 100%;
 }
 
+.nav-links .nav-cta {
+  background-color: var(--ink);
+  color: var(--white);
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--radius-sm);
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
 
-/* =========================================================
-   HERO
-   ========================================================= */
+.nav-links .nav-cta:hover {
+  background-color: var(--amber-deep);
+  transform: translateY(-1px);
+}
 
+.nav-links .nav-cta::after {
+  display: none;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+/* ---------- 4. HERO (Grid, dua kolom asimetris) ---------- */
 .hero {
-  position: relative;
-  overflow: hidden;
-  min-height: 680px;
-  display: flex;
+  padding-block: 5rem 6rem;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
   align-items: center;
-  padding: 90px 0;
-  background:
-    radial-gradient(
-      circle at 85% 20%,
-      rgba(225, 151, 92, 0.25),
-      transparent 28%
-    ),
-    linear-gradient(
-      135deg,
-      var(--cream) 0%,
-      var(--cream-soft) 55%,
-      #eadfd4 100%
-    );
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 430px;
-  height: 430px;
-  right: -120px;
-  bottom: -170px;
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    rgba(184, 92, 107, 0.22),
-    rgba(225, 151, 92, 0.08)
-  );
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
-}
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 18px;
-  color: var(--amber-deep);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 6.2rem);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  margin-bottom: 24px;
-}
-
-.hero-title span {
-  color: var(--rose);
-}
-
-.hero-description {
-  max-width: 640px;
+.eyebrow-note {
   color: var(--slate);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  max-width: 16ch;
+}
+
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(
+    120deg,
+    var(--amber) 0%,
+    var(--rose) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p.lede {
+  margin-top: 1.4rem;
   font-size: 1.08rem;
-  margin-bottom: 32px;
+  color: var(--slate);
+  max-width: 42ch;
 }
 
-.hero-actions {
+.hero__actions {
+  margin-top: 2.2rem;
   display: flex;
+  gap: 1rem;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 14px;
 }
-
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
 
 .btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 9px;
-  min-height: 46px;
-  padding: 11px 20px;
-  border: 1px solid transparent;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
   border-radius: var(--radius-sm);
+  font-size: 0.98rem;
+  font-weight: 500;
   cursor: pointer;
-  font-weight: 700;
+  border: 1.5px solid transparent;
   transition:
+    transform var(--transition-fast),
     background-color var(--transition-fast),
-    color var(--transition-fast),
-    border-color var(--transition-fast),
-    transform var(--transition-fast);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
+    border-color var(--transition-fast);
 }
 
 .btn-primary {
@@ -301,402 +263,462 @@ textarea {
   color: var(--white);
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:hover {
   background-color: var(--amber-deep);
-  color: var(--white);
+  transform: translateY(-2px);
 }
 
-.btn-secondary {
-  background-color: transparent;
-  border-color: rgba(20, 21, 31, 0.18);
-  color: var(--ink);
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-  background-color: var(--white);
+.btn-outline {
   border-color: var(--ink);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: var(--amber-deep);
+  color: var(--amber-deep);
+  transform: translateY(-2px);
 }
 
 
-/* =========================================================
-   SERVICES
-   ========================================================= */
-
-.services {
-  background-color: var(--white);
+/* Visual "horizon" — merepresentasikan fajar/insight, dibuat murni dengan CSS */
+.horizon {
+  position: relative;
+  height: 340px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #1b2036 0%,
+    #3a3652 42%,
+    var(--amber) 78%,
+    var(--rose) 100%
+  );
+  box-shadow: 0 30px 60px -20px rgba(20, 21, 31, 0.35);
 }
 
-.services-grid {
+.horizon__sun {
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    #fff4df,
+    var(--amber) 60%,
+    var(--rose) 100%
+  );
+  transform: translateX(-50%);
+  box-shadow: 0 0 70px 10px rgba(225, 151, 92, 0.55);
+}
+
+.horizon__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    black 55%
+  );
+}
+
+
+/* ---------- 5. LAYANAN (Grid, kartu jasa AI) ---------- */
+.section {
+  padding-block: 5rem;
+}
+
+.section-head {
+  max-width: 34rem;
+  margin-bottom: 2.8rem;
+}
+
+.section-head h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+.section-head p {
+  color: var(--slate);
+  margin-top: 0.8rem;
+}
+
+.layanan-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
-.service-card {
-  padding: 30px;
+.card-layanan {
+  background-color: var(--white);
   border: 1px solid rgba(20, 21, 31, 0.08);
   border-radius: var(--radius-md);
-  background-color: var(--cream);
+  padding: 1.8rem 1.5rem;
   transition:
     transform var(--transition-slow),
-    box-shadow var(--transition-slow);
+    box-shadow var(--transition-slow),
+    border-color var(--transition-slow);
 }
 
-.service-card:hover {
+.card-layanan:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(20, 21, 31, 0.1);
+  border-color: transparent;
+  box-shadow: 0 24px 40px -20px rgba(20, 21, 31, 0.25);
 }
 
-.service-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  border-radius: 12px;
+.card-layanan__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
   background: linear-gradient(
     135deg,
     var(--amber),
     var(--rose)
   );
-  color: var(--white);
-  font-size: 1.3rem;
-}
-
-.service-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  margin-bottom: 10px;
-}
-
-.service-card p {
-  color: var(--slate);
-  font-size: 0.95rem;
-}
-
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-
-.about {
-  background-color: var(--cream);
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 70px;
-  align-items: center;
-}
-
-.about-visual {
-  min-height: 430px;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  background:
-    radial-gradient(
-      circle at 25% 25%,
-      rgba(225, 151, 92, 0.75),
-      transparent 25%
-    ),
-    linear-gradient(
-      145deg,
-      var(--ink),
-      #36364a 65%,
-      var(--rose)
-    );
-}
-
-.about-visual::after {
-  content: "";
-  position: absolute;
-  width: 210px;
-  height: 210px;
-  right: -60px;
-  bottom: -50px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.about-content h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2.1rem, 4vw, 3.5rem);
-  line-height: 1.08;
-  margin-bottom: 20px;
-}
-
-.about-content p {
-  color: var(--slate);
-  margin-bottom: 18px;
-}
-
-.about-list {
-  list-style: none;
-  display: grid;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.about-list li {
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.about-list-icon {
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background-color: var(--amber);
   color: var(--white);
-  font-size: 0.75rem;
-  flex-shrink: 0;
+  font-size: 1.3rem;
+  margin-bottom: 1.1rem;
+}
+
+.card-layanan h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-layanan p {
+  color: var(--slate);
+  font-size: 0.94rem;
 }
 
 
-/* =========================================================
-   CONTACT
-   ========================================================= */
-
-.contact {
+/* ---------- 6. TENTANG (Flexbox, dua kolom) ---------- */
+.tentang {
   background-color: var(--cream-soft);
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 60px;
+.tentang__inner {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
 }
 
-.contact-info h2 {
+.tentang__text {
+  flex: 1.1;
+}
+
+.tentang__stats {
+  flex: 0.9;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+.stat {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  text-align: left;
+}
+
+.stat strong {
+  display: block;
   font-family: var(--font-display);
-  font-size: clamp(2.1rem, 4vw, 3.3rem);
-  line-height: 1.1;
-  margin-bottom: 18px;
-}
-
-.contact-info p {
-  color: var(--slate);
-  margin-bottom: 24px;
-}
-
-.contact-links {
-  display: grid;
-  gap: 12px;
-}
-
-.contact-links a {
-  color: var(--ink);
-  font-weight: 600;
-  transition: color var(--transition-fast);
-}
-
-.contact-links a:hover,
-.contact-links a:focus {
+  font-size: 1.9rem;
   color: var(--amber-deep);
 }
 
-.contact-form {
-  padding: 30px;
-  border-radius: var(--radius-md);
-  background-color: var(--white);
-  border: 1px solid rgba(20, 21, 31, 0.08);
+.stat span {
+  color: var(--slate);
+  font-size: 0.88rem;
 }
 
-.form-group {
+
+/* ---------- 7. KONTAK (Grid, form) ---------- */
+.kontak__inner {
   display: grid;
-  gap: 8px;
-  margin-bottom: 18px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
 }
 
-.form-group label {
-  font-size: 0.9rem;
-  font-weight: 700;
+.kontak__info p {
+  color: var(--slate);
+  margin-top: 0.8rem;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid rgba(20, 21, 31, 0.16);
-  border-radius: var(--radius-sm);
-  background-color: var(--cream);
-  color: var(--ink);
-  outline: none;
-  transition:
-    border-color var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.form-group textarea {
-  min-height: 140px;
-  resize: vertical;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--amber-deep);
-  box-shadow: 0 0 0 3px rgba(201, 122, 63, 0.15);
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.footer {
-  padding: 28px 0;
-  background-color: var(--ink);
-  color: #cbd0dc;
-}
-
-.footer-inner {
+.kontak__list {
+  margin-top: 1.6rem;
   display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.kontak__list li {
+  display: flex;
+  gap: 0.7rem;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  color: var(--ink);
+  font-size: 0.95rem;
 }
 
-.footer-brand {
-  color: var(--white);
-  font-family: var(--font-display);
-  font-weight: 700;
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--amber);
+  flex-shrink: 0;
 }
 
-.footer-links {
+form.kontak-form {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  border: 1px solid rgba(20, 21, 31, 0.08);
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  list-style: none;
+  flex-direction: column;
+  gap: 1.1rem;
 }
 
-.footer-links a {
-  color: #cbd0dc;
+.field label {
+  display: block;
+  font-size: 0.86rem;
+  color: var(--slate);
+  margin-bottom: 0.4rem;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(20, 21, 31, 0.14);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background-color: var(--cream);
+  transition: border-color var(--transition-fast);
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--amber);
+  outline: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+
+/* ---------- 8. FOOTER ---------- */
+.site-footer {
+  background-color: var(--ink);
+  color: var(--cream);
+  padding-block: 3rem;
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer__brand {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.footer__links {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.footer__links a {
+  color: var(--slate-light);
+  font-size: 0.9rem;
   transition: color var(--transition-fast);
 }
 
-.footer-links a:hover,
-.footer-links a:focus {
+.footer__links a:hover {
+  color: var(--cream);
+}
+
+.footer__copy {
+  color: var(--slate-light);
+  font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   9. BLOG & BLOG DETAIL
+   Custom CSS dipusatkan di stylesheet agar separation of
+   concern tetap terjaga.
+   ========================================================= */
+
+
+/* Navbar untuk halaman Bootstrap */
+.blog-navbar {
+  background-color: rgba(250, 247, 242, 0.96);
+  border-bottom: 1px solid rgba(20, 21, 31, 0.08);
+}
+
+
+/* Hero Blog */
+.blog-hero {
+  background-color: var(--cream);
+}
+
+
+/* Cover artikel dengan gradient */
+.article-cover-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--amber),
+    var(--rose)
+  );
+}
+
+
+/* Cover artikel terkait */
+.related-cover-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--amber),
+    var(--rose)
+  );
+}
+
+
+/* Link artikel */
+.blog-link {
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.blog-link:hover {
+  color: #003d80;
+}
+
+
+/* Link kontak pada background terang */
+.contact-link {
+  color: #005f73;
+}
+
+.contact-link:hover {
+  color: #003f4d;
+}
+
+
+/* Pagination */
+.blog-pagination .page-link {
+  color: #0056b3;
+}
+
+.blog-pagination .page-item.active .page-link {
+  background-color: var(--ink);
+  border-color: var(--ink);
   color: var(--white);
 }
 
-.footer-copy {
-  font-size: 0.85rem;
-  color: #9da5b7;
+.blog-pagination .page-link:hover {
+  color: #003d80;
+}
+
+
+/* Form komentar */
+.comment-form {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+}
+
+
+/* Artikel terkait */
+.related-article-cover {
+  min-height: 160px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 
 /* =========================================================
-   FOCUS ACCESSIBILITY
+   10. MEDIA QUERIES (Responsive)
    ========================================================= */
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid var(--amber);
-  outline-offset: 3px;
-}
-
-
-/* =========================================================
-   RESPONSIVE TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-  .section {
-    padding: 70px 0;
-  }
-
-  .services-grid {
+@media (max-width: 960px) {
+  .layanan-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .about-grid {
+  .tentang__inner,
+  .kontak__inner,
+  .hero__inner {
     grid-template-columns: 1fr;
-    gap: 40px;
   }
 
-  .about-visual {
-    min-height: 320px;
+  .tentang__inner {
+    flex-direction: column;
   }
 
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
+  .horizon {
+    order: -1;
   }
 }
 
 
-/* =========================================================
-   RESPONSIVE MOBILE
-   ========================================================= */
-
 @media (max-width: 640px) {
-  .container {
-    width: min(100% - 28px, var(--container-width));
-  }
-
-  .navbar-inner {
-    min-height: 68px;
-  }
-
   .nav-links {
-    gap: 16px;
-  }
-
-  .hero {
-    min-height: 580px;
-    padding: 70px 0;
-  }
-
-  .hero-title {
-    font-size: clamp(2.7rem, 13vw, 4.5rem);
-  }
-
-  .hero-description {
-    font-size: 1rem;
-  }
-
-  .hero-actions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--cream);
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
+    padding: 1.2rem 1.5rem;
+    gap: 1.1rem;
+    border-bottom: 1px solid rgba(20, 21, 31, 0.08);
+    display: none;
   }
 
-  .hero-actions .btn {
-    width: 100%;
+  .nav-links.is-open {
+    display: flex;
   }
 
-  .services-grid {
+  .nav-toggle {
+    display: block;
+  }
+
+  .layanan-grid {
     grid-template-columns: 1fr;
   }
 
-  .service-card {
-    padding: 24px;
-  }
-
-  .about-visual {
-    min-height: 250px;
-  }
-
-  .contact-form {
-    padding: 22px;
-  }
-
-  .footer-inner {
+  .footer__inner {
     flex-direction: column;
-    text-align: center;
+    align-items: flex-start;
   }
 
-  .footer-links {
-    justify-content: center;
+  .hero {
+    padding-block: 3rem 3.5rem;
+  }
+
+  .section {
+    padding-block: 3.2rem;
   }
 }
